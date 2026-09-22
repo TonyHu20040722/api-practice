@@ -56,3 +56,41 @@ performance measurement is claimed.
 Define behavior for invalid inputs, add focused tests for that contract, and
 then implement validation. Separately, simplify the redundant recovery state
 while keeping the current tests passing. Neither change has been made yet.
+
+## 2026-09-22 — Week 5 (Sep 20–26): permission and name exercises
+
+### Learned
+
+Role grants can be merged with a set, and explicit denials applied after all
+grants. A validator can return one error according to a stated rule order:
+length, starting character, then first invalid character.
+
+### Built
+
+Added the personally completed practice in `src/api_practice/authorization.py`.
+The existing functions, reasoning and example cases were moved here with Codex
+help. Earlier intermediate versions remain outside the public project.
+
+### Verified
+
+The standard-library adapter in `tests/test_authorization.py` ran 16 permission
+and 32 name examples successfully on 2026-09-22. The 16 existing analysis tests
+also passed. The adapter exposes two test methods that execute the 48 examples;
+it does not claim 48 independent unittest methods.
+
+### Evidence
+
+- `src/api_practice/authorization.py`
+- `tests/test_authorization.py`
+- `PYTHONPATH=src python3 -B -m unittest discover -s tests -v`
+
+### What I Can Explain Now
+
+Why unknown roles grant nothing, why denials win over grants, why a set removes
+duplicates, and why length is tested before indexing the first character.
+Tony confirmed personal participation and ability to explain these exercises.
+
+### Next Milestone
+
+Define and test malformed-input behavior before using the functions as a
+reusable application component. No production security integration is claimed.
